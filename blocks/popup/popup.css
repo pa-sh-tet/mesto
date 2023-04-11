@@ -1,0 +1,8 @@
+.popup {
+  display: none;
+}
+
+
+.popup_opened {
+  display: flex;
+}
