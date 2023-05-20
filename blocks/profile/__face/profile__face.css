@@ -1,0 +1,13 @@
+.profile__face {
+  width: 80%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 612px) {
+  .profile__face {
+    flex-direction: column;
+    width: 100%;
+  }
+}
