@@ -1,5 +1,5 @@
 //Элементы кнопок
-let editButton = document.querySelector('.profile__edit_button');
+let editButton = document.querySelector('.profile__edit-button');
 let closeButton = document.querySelector('.popup__close_button');
 let saveButton = document.querySelector('.popup__save_button');
 let popup = document.querySelector('.popup');

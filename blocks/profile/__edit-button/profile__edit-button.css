@@ -1,4 +1,4 @@
-.profile__edit_button {
+.profile__edit-button {
   width: 24px;
   height: 24px;
   margin: 15px 0 0 18px;
@@ -6,13 +6,13 @@
 }
 
 @media screen and (max-width: 612px) {
-  .profile__edit_button {
+  .profile__edit-button {
     margin: auto 0 0 10px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .profile__edit_button {
+  .profile__edit-button {
     position: absolute;
     width: 18px;
     height: 18px;
@@ -21,7 +21,7 @@
   }
 }
 
-.profile__edit_button:hover {
+.profile__edit-button:hover {
   opacity: 0.6;
   cursor: pointer;
 }
