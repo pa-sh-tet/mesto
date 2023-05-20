@@ -18,13 +18,13 @@
 @import url("../blocks/header/__logo/header__logo.css");
 
 @import url("../blocks/popup/popup.css");
-@import url("../blocks/popup/__close_button/popup__close_button.css");
+@import url("../blocks/popup/__close_button/popup__close-button.css");
 @import url("../blocks/popup/__container/popup__container.css");
 @import url("../blocks/popup/__form/popup__form.css");
 @import url("../blocks/popup/__input/popup__input.css");
 @import url("../blocks/popup/__input_description/popup__input_description.css");
 @import url("../blocks/popup/__input_name/popup__input_name.css");
-@import url("../blocks/popup/__save_button/popup__save_button.css");
+@import url("../blocks/popup/__save_button/popup__save-button.css");
 @import url("../blocks/popup/__title/popup__title.css");
 
 @import url("../blocks/page/page.css");
