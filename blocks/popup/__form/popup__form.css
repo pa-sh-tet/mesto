@@ -1,13 +1,7 @@
-/* @media screen and (max-width: 320px) {
-  .popup__form {
-    width: 1vw;
-  }
-} */
-
 .popup__form {
   transition: all .3s ease;
-  height: 259px;
-  margin: 34px 36px 37px;
+  height: 100%;
+  margin: 0 36px;
   display: flex;
   flex-direction: column;
 }
