@@ -8,8 +8,8 @@ let popup = document.querySelector('.popup');
 let formElement = document.querySelector('.popup__form');
 
 //Имя и работа в форме
-let nameInput = document.querySelector('.popup__input__name');
-let jobInput = document.querySelector('.popup__input__description');
+let nameInput = document.querySelector('.popup__input_name');
+let jobInput = document.querySelector('.popup__input_description');
 
 //Имя и работа в профиле
 let profileName = document.querySelector('.profile__name');
