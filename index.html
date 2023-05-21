@@ -20,18 +20,12 @@
         <div class="profile__data">
           <div class="profile__info">
             <h1 class="profile__name">Павел Фронтендов</h1>
-            <img class="profile__edit-button"
-            src="./images/edit_button.svg"
-            alt="Изменить профиль">
+            <button class="profile__edit-button" type="submit"></button>
           </div>
           <p class="profile__description">Миллиардер, плейбой, джун </p>
         </div>
       </div>
-      <div class="profile__add-button">
-        <img class="profile__add-button-image"
-        src="./images/add_button.svg"
-        alt="Добавить информацию">
-      </div>
+      <button class="profile__add-button" type="submit"></button>
     </section>
     <section class="elements">
       <div class="elements__item">
@@ -39,10 +33,44 @@
         src="./images/karachaevsk.jpg"
         alt="Карачаевск">
         <div class="elements__description">
-          <p class="elements__place">Карачаевск</p>
-          <img class="elements__like-image"
-          src="./images/like.svg"
-          alt="Нравится">
+          <h2 class="elements__place">Карачаевск</h2>
+          <button type="submit" class="elements__like-button"></button>
+        </div>
+      </div>
+      <div class="elements__item">
+        <img class="elements__item-image"
+        src="./images/Elbrus.jpg"
+        alt="Карачаевск">
+        <div class="elements__description">
+          <h2 class="elements__place">Гора Эльбрус</h2>
+          <button type="submit" class="elements__like-button"></button>
+        </div>
+      </div>
+      <div class="elements__item">
+        <img class="elements__item-image"
+        src="./images/Dombai.jpg"
+        alt="Карачаевск">
+        <div class="elements__description">
+          <h2 class="elements__place">Домбай</h2>
+          <button type="submit" class="elements__like-button"></button>
+        </div>
+      </div>
+      <div class="elements__item">
+        <img class="elements__item-image"
+        src="./images/Elbrus.jpg"
+        alt="Карачаевск">
+        <div class="elements__description">
+          <h2 class="elements__place">Гора Эльбрус</h2>
+          <button type="submit" class="elements__like-button"></button>
+        </div>
+      </div>
+      <div class="elements__item">
+        <img class="elements__item-image"
+        src="./images/Dombai.jpg"
+        alt="Карачаевск">
+        <div class="elements__description">
+          <h2 class="elements__place">Домбай</h2>
+          <button type="submit" class="elements__like-button"></button>
         </div>
       </div>
       <div class="elements__item">
@@ -50,72 +78,26 @@
         src="./images/karachaevsk.jpg"
         alt="Карачаевск">
         <div class="elements__description">
-          <p class="elements__place">Карачаевск</p>
-          <img class="elements__like-image"
-          src="./images/like.svg"
-          alt="Нравится">
-        </div>
-      </div>
-      <div class="elements__item">
-        <img class="elements__item-image"
-        src="./images/karachaevsk.jpg"
-        alt="Карачаевск">
-        <div class="elements__description">
-          <p class="elements__place">Карачаевск</p>
-          <img class="elements__like-image"
-          src="./images/like.svg"
-          alt="Нравится">
-        </div>
-      </div>
-      <div class="elements__item">
-        <img class="elements__item-image"
-        src="./images/karachaevsk.jpg"
-        alt="Карачаевск">
-        <div class="elements__description">
-          <p class="elements__place">Карачаевск</p>
-          <img class="elements__like-image"
-          src="./images/like.svg"
-          alt="Нравится">
-        </div>
-      </div>
-      <div class="elements__item">
-        <img class="elements__item-image"
-        src="./images/karachaevsk.jpg"
-        alt="Карачаевск">
-        <div class="elements__description">
-          <p class="elements__place">Карачаевск</p>
-          <img class="elements__like-image"
-          src="./images/like.svg"
-          alt="Нравится">
-        </div>
-      </div>
-      <div class="elements__item">
-        <img class="elements__item-image"
-        src="./images/karachaevsk.jpg"
-        alt="Карачаевск">
-        <div class="elements__description">
-          <p class="elements__place">Карачаевск</p>
-          <img class="elements__like-image"
-          src="./images/like.svg"
-          alt="Нравится">
+          <h2 class="elements__place">Карачаевск</h2>
+          <button type="submit" class="elements__like-button"></button>
         </div>
       </div>
     </section>
   </main>
   <footer class="footer">
-    &copy; 2023 Mesto Russia
+    <p>&copy; 2023 Mesto Russia</p>
   </footer>
   <section class="popup">
     <div class="popup__container">
-      <form class="popup__form">
-        <h1 class="popup__title">Редактировать профиль</h1>
-        <input class="popup__input popup__input_name">
-        <input class="popup__input popup__input_description">
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <form name="form" class="popup__form">
+        <input placeholder="Введите имя" name="userName" type="text" class="popup__input popup__input__name">
+        <input placeholder="Введите профессию" name="userJob" type="text" class="popup__input popup__input__description">
         <button type="submit" class="popup__save-button">Сохранить</button>
       </form>
-      <button type="submit" class="popup__close-button"></button>
+      <button type="button" class="popup__close-button"></button>
     </div>
   </section>
-  <script src="./index.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>

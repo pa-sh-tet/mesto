@@ -4,31 +4,33 @@ let closeButton = document.querySelector('.popup__close-button');
 let saveButton = document.querySelector('.popup__save-button');
 let popup = document.querySelector('.popup');
 
-//Открытие попапа редактирования профиля
-function openEditProfile () {
-  popup.setAttribute('style', 'display: flex')
-};
-
-//Закрытие попапа редактирования профиля
-function closeEditProfile () {
-  popup.setAttribute('style', 'display: none')
-};
-
 // Находим форму в DOM
 let formElement = document.querySelector('.popup__form');
 
 //Имя и работа в форме
-let nameInput = document.querySelector('.popup__input_name');
-let jobInput = document.querySelector('.popup__input_description');
+let nameInput = document.querySelector('.popup__input__name');
+let jobInput = document.querySelector('.popup__input__description');
 
 //Имя и работа в профиле
-let userName = document.querySelector('.profile__name');
-let userJob = document.querySelector('.profile__description');
+let profileName = document.querySelector('.profile__name');
+let profileJob = document.querySelector('.profile__description');
+
+//Открытие попапа редактирования профиля
+function openEditProfile () {
+  popup.classList.add('popup_active');
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+};
+
+//Закрытие попапа редактирования профиля
+function closeEditProfile () {
+  popup.classList.remove('popup_active');
+};
 
 function handleFormSubmit (evt) {
   evt.preventDefault();
-  userName.textContent = nameInput.value;
-  userJob.textContent = jobInput.value;
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
   closeEditProfile();
 }
 

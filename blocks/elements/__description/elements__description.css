@@ -1,8 +1,9 @@
 .elements__description {
-  margin: 25px 20px 31px 20px;
+  margin: 22px 20px ;
   width: 246px;
-  height: 23px;
+  align-self: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }

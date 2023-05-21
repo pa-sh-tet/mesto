@@ -1,9 +1,9 @@
 .profile__data {
-  margin: 22px 0 25px 0;
+  padding-bottom: 40p;
+  margin: 22px 0 25px ;
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 80px;
   width: 70%;
 }
 
@@ -16,13 +16,6 @@
 @media screen and (max-width: 612px) {
   .profile__data {
     margin: 0 auto;
-    height: 60px;
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .profile__data {
     width: 100%;
   }
 }
