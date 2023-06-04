@@ -10,9 +10,3 @@
     margin: 25px 22px;
   }
 }
-
-@media screen and (max-width: 320px) {
-  .popup__form {
-    width: 80vw;
-  }
-}
