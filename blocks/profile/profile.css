@@ -17,3 +17,9 @@
     margin-bottom: 36px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .profile {
+    width: calc(100% - 38px);
+  }
+}

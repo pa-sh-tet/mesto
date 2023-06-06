@@ -13,6 +13,7 @@
 
 @media screen and (max-width: 520px) {
   .main {
+    align-items: center;
     max-width: calc(100% - 24px);
     margin: 0 auto 48px;
   }
