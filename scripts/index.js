@@ -43,6 +43,8 @@ formElementProfile.addEventListener('submit', handleFormProfileSubmit);
 editProfileButton.addEventListener('click', openEditProfile);
 closeProfileButton.addEventListener('click', closeEditProfile);
 
+
+
 const initialCards = [
   {
     name: 'Архыз',
