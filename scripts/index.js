@@ -36,8 +36,8 @@ const popupProfile = document.getElementById('profile-popup');
 const formElementProfile = document.getElementById('profile__form');
 
 //Имя и работа в форме профиля
-const nameProfileInput = document.getElementById('userName');
-const jobInput = document.getElementById('userJob');
+const nameProfileInput = document.getElementById('name-input');
+const jobInput = document.getElementById('job-input');
 
 //Имя и работа в профиле
 const profileName = document.querySelector('.profile__name');
@@ -98,8 +98,8 @@ const listElement = document.querySelector('.elements');
 const popupImage = document.querySelector('.image-popup')
 
 //Имя и Ссылка в попапе места
-const namePlaceInput = document.getElementById('placeName');
-const linkPlaceInput = document.getElementById('placeLink');
+const namePlaceInput = document.getElementById('place-input');
+const linkPlaceInput = document.getElementById('link-input');
 
 //Функция открытия попапа добавления Карточки
 const openPlacePopup = () => {openPopup(popupPlace)};
@@ -125,8 +125,8 @@ buttonClosePopupImage.addEventListener('click', () => {
 
 //Создание карточки
 const createCard = ({name, link}) => {
-  namePlaceInput.value = '';
-  linkPlaceInput.value = '';
+  // namePlaceInput.value = '';
+  // linkPlaceInput.value = '';
 
   //Клонируем содержимое template
   const clone = templateElement.content.cloneNode(true);
@@ -177,6 +177,10 @@ function handleFormCardSubmit(evt) {
 
   //Добавляем в список элементов новую карточку
   listElement.prepend(createCard(newCard));
+
+  namePlaceInput.reset();
+  linkPlaceInput.reset();
+
   closePlacePopup();
 };
 
@@ -188,3 +192,28 @@ initialCards.forEach((item) => {
 
 //"Слушатель" на форму для добавления карточки
 formElementCard.addEventListener('submit', handleFormCardSubmit);
+
+//Список из всех попапов
+const popupList = Array.from(document.querySelectorAll('.popup'));
+
+//Добавление слушателя закрытия попапов на Esc на документ
+document.addEventListener('keydown', function (e) {
+  popupList.forEach((popup) => {
+    if (e.key === "Escape") {
+      closePopup(popup);
+    }
+  });
+});
+
+//Закрытие попапов на нажатие на оверлей
+const closePopupOverlay = () => {
+  popupList.forEach((popupContainer) => {
+    popupContainer.addEventListener('click', (evt) => {
+      if (evt.target === evt.currentTarget) {
+        closePopup(popupContainer)
+      }
+    });
+  });
+}
+
+closePopupOverlay();
