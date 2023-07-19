@@ -28,6 +28,7 @@ const initialCards = [
 //Элементы кнопок
 const editProfileButton = document.querySelector('.profile__edit-button');
 const closeProfileButton = document.getElementById('profile-close-button');
+const formProfileSaveButton = document.querySelector('#profile-save-button');
 
 // const saveButton = document.getElementById('profile-save-button');
 const popupProfile = document.getElementById('profile-popup');
@@ -46,11 +47,13 @@ const profileJob = document.querySelector('.profile__description');
 //Универсальная функция открытия попапа
 function openPopup(popup) {
   popup.classList.add('popup_active');
+  document.addEventListener('keydown', closeByEsc);
 };
 
 //Универсальная функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove('popup_active');
+  document.removeEventListener('keydown', closeByEsc);
 };
 
 //Открытие попапа редактирования профиля
@@ -71,6 +74,10 @@ function handleFormProfileSubmit (evt) {
   evt.preventDefault();
   profileName.textContent = nameProfileInput.value;
   profileJob.textContent = jobInput.value;
+  //Деактивируем кнопку
+  formProfileSaveButton.classList.add('popup__save-button_inactive');
+  formProfileSaveButton.disabled = true;
+  
   closePopup(popupProfile);
 };
 
@@ -117,6 +124,9 @@ const popupImageName = popupImage.querySelector('.image-popup__name');
 //Кнопка закрытия попапа картинки
 const buttonClosePopupImage = popupImage.querySelector('#image-close-button');
 
+//Кнопка создания карточки
+const formPlaceSaveButton = document.querySelector('#place_save-button')
+
 //"Слушатель" для закрытия попапа
 buttonClosePopupImage.addEventListener('click', () => {
   // popupImage.classList.remove('popup_active');
@@ -125,9 +135,6 @@ buttonClosePopupImage.addEventListener('click', () => {
 
 //Создание карточки
 const createCard = ({name, link}) => {
-  // namePlaceInput.value = '';
-  // linkPlaceInput.value = '';
-
   //Клонируем содержимое template
   const clone = templateElement.content.cloneNode(true);
   const placeElement = clone.querySelector('.elements__item');
@@ -178,9 +185,12 @@ function handleFormCardSubmit(evt) {
   //Добавляем в список элементов новую карточку
   listElement.prepend(createCard(newCard));
 
-  namePlaceInput.reset();
-  linkPlaceInput.reset();
+  formElementCard.reset();
 
+  //Делаем кнопку неактивной
+  formPlaceSaveButton.classList.add('popup__save-button_inactive');
+  formPlaceSaveButton.disabled = true;
+  
   closePlacePopup();
 };
 
@@ -197,13 +207,12 @@ formElementCard.addEventListener('submit', handleFormCardSubmit);
 const popupList = Array.from(document.querySelectorAll('.popup'));
 
 //Добавление слушателя закрытия попапов на Esc на документ
-document.addEventListener('keydown', function (e) {
-  popupList.forEach((popup) => {
-    if (e.key === "Escape") {
-      closePopup(popup);
-    }
-  });
-});
+function closeByEsc (evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_active');
+    closePopup(openedPopup)
+  }
+};
 
 //Закрытие попапов на нажатие на оверлей
 const closePopupOverlay = () => {
