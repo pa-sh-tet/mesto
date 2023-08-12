@@ -1,6 +1,6 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
-import { initialCards, validationConfig } from './constans.js';
+import { initialCards, validationConfig, closePopup, closeByEsc } from './constans.js';
 
 //Элементы кнопок
 const editProfileButton = document.querySelector('.profile__edit-button');
@@ -76,12 +76,6 @@ function openPopup(popup) {
   document.addEventListener('keydown', closeByEsc);
 };
 
-//Универсальная функция закрытия попапа
-function closePopup(popup) {
-  popup.classList.remove('popup_active');
-  document.removeEventListener('keydown', closeByEsc);
-};
-
 //Открытие попапа редактирования профиля
 function openEditProfile () {
   openPopup(popupProfile);
@@ -105,14 +99,6 @@ function handleFormProfileSubmit (evt) {
   formProfileSaveButton.disabled = true;
   
   closePopup(popupProfile);
-};
-
-//Добавление слушателя закрытия попапов на Esc на документ
-function closeByEsc (evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_active');
-    closePopup(openedPopup)
-  }
 };
 
 function createNewCard(name, link) {
