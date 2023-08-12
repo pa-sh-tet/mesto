@@ -1,6 +1,6 @@
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
-import { initialCards, validationConfig, closePopup, closeByEsc } from './constans.js';
+import { initialCards, validationConfig, closePopup, openPopup } from './constans.js';
 
 //Элементы кнопок
 const editProfileButton = document.querySelector('.profile__edit-button');
@@ -46,10 +46,6 @@ const openPlacePopup = () => {openPopup(popupPlace)};
 //Функция закрытия попапа добавления Карточки
 const closePlacePopup = () => {closePopup(popupPlace)};
 
-//Картинка и имя попапа
-// const popupImagePhoto = popupImage.querySelector('.image-popup__image');
-// const popupImageName = popupImage.querySelector('.image-popup__name');
-
 //Кнопка закрытия попапа картинки
 const buttonClosePopupImage = popupImage.querySelector('#image-close-button');
 
@@ -69,12 +65,6 @@ const closePopupOverlay = () => {
     });
   });
 }
-
-//Универсальная функция открытия попапа
-function openPopup(popup) {
-  popup.classList.add('popup_active');
-  document.addEventListener('keydown', closeByEsc);
-};
 
 //Открытие попапа редактирования профиля
 function openEditProfile () {
