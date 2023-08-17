@@ -5,7 +5,6 @@ import { initialCards, validationConfig, closePopup, openPopup } from './constan
 //Элементы кнопок
 const editProfileButton = document.querySelector('.profile__edit-button');
 const closeProfileButton = document.getElementById('profile-close-button');
-const formProfileSaveButton = document.querySelector('#profile-save-button');
 
 // const saveButton = document.getElementById('profile-save-button');
 const popupProfile = document.getElementById('profile-popup');
@@ -32,7 +31,7 @@ const popupPlace = document.querySelector('.popup_place');
 const formElementCard = document.getElementById('place-form');
 
 //Находим Template элемента
-const templateElement = document.getElementById('element');
+const templateElement = document.querySelector('#element');
 const listElement = document.querySelector('.elements');
 
 const popupImage = document.querySelector('.image-popup')
@@ -48,9 +47,6 @@ const closePlacePopup = () => {closePopup(popupPlace)};
 
 //Кнопка закрытия попапа картинки
 const buttonClosePopupImage = popupImage.querySelector('#image-close-button');
-
-//Кнопка создания карточки
-const formPlaceSaveButton = document.querySelector('#place_save-button');
 
 //Список из всех попапов
 const popupList = Array.from(document.querySelectorAll('.popup'));
@@ -75,7 +71,6 @@ function openEditProfile () {
 
 //Закрытие попапа редактирования профиля
 function closeEditProfile () {
-  // popupProfile.classList.remove('popup_active');
   closePopup(popupProfile);
 };
 
@@ -85,14 +80,13 @@ function handleFormProfileSubmit (evt) {
   profileName.textContent = nameProfileInput.value;
   profileJob.textContent = jobInput.value;
   //Деактивируем кнопку
-  formProfileSaveButton.classList.add('popup__save-button_inactive');
-  formProfileSaveButton.disabled = true;
+  formElementProfileValidator.disableSubmitButton();
   
   closePopup(popupProfile);
 };
 
-function createNewCard(name, link) {
-  const newCard = new Card(name, link);
+function createNewCard(data, templateElement) {
+  const newCard = new Card(data, templateElement);
   return newCard.createCard();
 }
 
@@ -101,25 +95,25 @@ function handleFormCardSubmit(evt) {
   evt.preventDefault();
 
   //Создаем новую константу куда помещаем значения с инпутов
-  const card = { };
-  card.name = namePlaceInput.value;
-  card.link = linkPlaceInput.value;
-  
+  const data = { 
+    name: namePlaceInput.value,
+    link: linkPlaceInput.value,
+  };
+
   //Добавляем в список элементов новую карточку
-  listElement.prepend(createNewCard(card));
+  listElement.prepend(createNewCard(data, templateElement));
 
   formElementCard.reset();
 
   //Делаем кнопку неактивной
-  formPlaceSaveButton.classList.add('popup__save-button_inactive');
-  formPlaceSaveButton.disabled = true;
+  formElementCardValidator.disableSubmitButton();
   
   closePlacePopup();
 };
 
 //Добавление карточек из массива
 initialCards.forEach((item) => {
-  const placeElement = createNewCard(item);
+  const placeElement = createNewCard(item, templateElement);
   listElement.prepend(placeElement);
 });
 
@@ -145,8 +139,8 @@ buttonClosePopupImage.addEventListener('click', () => {
   closePopup(popupImage);
 });
 
-const formElementProfileValidator = new FormValidator(formElementProfile, validationConfig);
+const formElementProfileValidator = new FormValidator(validationConfig, formElementProfile);
 formElementProfileValidator.enableValidation();
 
-const formElementCardValidator = new FormValidator(formElementCard, validationConfig);
+const formElementCardValidator = new FormValidator(validationConfig, formElementCard);
 formElementCardValidator.enableValidation();

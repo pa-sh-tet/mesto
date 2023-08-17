@@ -1,21 +1,22 @@
-import { _popupImage, _popupImagePhoto, _popupImageName, openPopup } from './constans.js'
+import { popupImage, popupImagePhoto, popupImageName, openPopup } from './constans.js'
 
 export default class Card {
-  constructor({ name, link }) {
-    this._name = name;
-    this._link = link;
+  constructor(data, cardTemplate) {
+    this._name = data.name;
+    this._link = data.link;
+    this._cardTemplate = cardTemplate;
   }
 
   _getTemplate() {
-    const _newTemplate = document.querySelector('#element').content.querySelector('.elements__item').cloneNode(true);
+    const _newTemplate = this._cardTemplate.content.querySelector('.elements__item').cloneNode(true);
     return _newTemplate;
   }
 
   _openPopupImage() {
-    _popupImagePhoto.src = this._link;
-    _popupImageName.textContent = this._name;
-    _popupImagePhoto.alt = this._link;
-    openPopup(_popupImage);
+    popupImagePhoto.src = this._link;
+    popupImageName.textContent = this._name;
+    popupImagePhoto.alt = this._link;
+    openPopup(popupImage);
   }
 
   _deleteCard() {

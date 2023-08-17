@@ -34,9 +34,9 @@ export const validationConfig = {
   errorElement: 'popup__input-error_active'
 }; 
 
-export const _popupImage = document.querySelector('.image-popup');
-export const _popupImagePhoto = _popupImage.querySelector('.image-popup__image');
-export const _popupImageName = _popupImage.querySelector('.image-popup__name');
+export const popupImage = document.querySelector('.image-popup');
+export const popupImagePhoto = popupImage.querySelector('.image-popup__image');
+export const popupImageName = popupImage.querySelector('.image-popup__name');
 
 export const openPopup = (popup) => {
   popup.classList.add('popup_active');

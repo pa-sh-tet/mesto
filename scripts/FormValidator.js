@@ -1,5 +1,5 @@
 export default class FormValidator {
-  constructor(formElement, validationConfig) {
+  constructor(validationConfig, formElement) {
     this._formElement = formElement;
     this._inputElement = validationConfig.inputElement;
     this._saveButtonElement = validationConfig.saveButtonElement;
@@ -65,14 +65,22 @@ export default class FormValidator {
     });
   };
 
+  disableSubmitButton() {
+    this._buttonElement.classList.add(this._inactiveButtonElement);
+    this._buttonElement.disabled = true;
+  }
+
+  _activeSubmitButton() {
+    this._buttonElement.classList.remove(this._inactiveButtonElement)
+    this._buttonElement.disabled = false;
+  }
+
   //Активация-Деактивация кнопки при проверки на валидность инпутов всей формы 
   toggleButtonState() {
     if (this._hasInvalidInput()) {
-      this._buttonElement.classList.add(this._inactiveButtonElement);
-      this._buttonElement.disabled = true;
+      this.disableSubmitButton();
     } else {
-      this._buttonElement.classList.remove(this._inactiveButtonElement)
-      this._buttonElement.disabled = false;
+      this._activeSubmitButton();
     }
   };
 } 
