@@ -1,10 +1,11 @@
-import { popupImage, popupImagePhoto, popupImageName, openPopup } from './constans.js'
+// import { popupImage, popupImagePhoto, popupImageName, openPopup } from './constans.js'
 
-export default class Card {
-  constructor(data, cardTemplate) {
+export default class Card{
+  constructor(data, cardTemplate, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardTemplate = cardTemplate;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -12,12 +13,12 @@ export default class Card {
     return _newTemplate;
   }
 
-  _openPopupImage() {
-    popupImagePhoto.src = this._link;
-    popupImageName.textContent = this._name;
-    popupImagePhoto.alt = this._link;
-    openPopup(popupImage);
-  }
+  // _openPopupImage() {
+  //   popupImagePhoto.src = this._link;
+  //   popupImageName.textContent = this._name;
+  //   popupImagePhoto.alt = this._link;
+  //   open(popupImage);
+  // }
 
   _deleteCard() {
     this._cardElement.closest('.elements__item').remove();
@@ -36,7 +37,7 @@ export default class Card {
     _buttonLike.addEventListener('click', () => {this._likeCard()});
 
     const _cardImage = this._cardElement.querySelector('.elements__item-image');
-    _cardImage.addEventListener('click', () => {this._openPopupImage()});
+    _cardImage.addEventListener('click', () => {this._handleCardClick(this._name, this._link)});
   }
 
   createCard() {
