@@ -37,20 +37,13 @@ export const validationConfig = {
 export const popupImage = document.querySelector('.image-popup');
 export const popupImagePhoto = popupImage.querySelector('.image-popup__image');
 export const popupImageName = popupImage.querySelector('.image-popup__name');
-
-// export const openPopup = (popup) => {
-//   popup.classList.add('popup_active');
-//   document.addEventListener('keydown', closeByEsc);
-// };
-
-// export const closePopup = (popup) => {
-//   popup.classList.remove('popup_active');
-//   document.removeEventListener('keydown', closeByEsc);
-// };
-
-// const closeByEsc = (evt) => {
-//   if (evt.key === 'Escape') {
-//     const openedPopup = document.querySelector('.popup_active');
-//     closePopup(openedPopup)
-//   }
-// };
+export const addCardButton = document.querySelector('.profile__add-button');
+export const editProfileButton = document.querySelector('.profile__edit-button');
+export const popupEditNameInput = document.querySelector('.popup__profile-name');
+export const popupEditDescriptionInput = document.querySelector('.popup__profile-description');
+export const popupProfile = document.querySelector('#profile-popup');
+export const cardTemplate = document.querySelector('#element');
+export const listElement = document.querySelector('.elements');
+export const popupPlace = document.querySelector('.popup_place');
+export const formElementProfile = document.querySelector('#profile__form');
+export const formElementCard = document.querySelector('#place-form');

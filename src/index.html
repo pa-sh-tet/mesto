@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Павел Альтапов">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Место</title>
 </head>
 <body class="page">
@@ -15,7 +14,7 @@
     <section class="profile">
       <div class="profile__face">
         <img class="profile__image"
-        src="./images/image.jpg"
+        src="<%=require('./images/image.jpg')%>"
         alt="Фото профиля">
         <div class="profile__data">
           <div class="profile__info">
@@ -40,9 +39,9 @@
     <div class="popup__container">
       <h3 class="popup__title">Редактировать профиль</h3>
       <form name="form" class="popup__form" id="profile__form" novalidate>
-        <input placeholder="Введите имя" id="name-input" type="text" class="popup__input popup__input_type_name" minlength="2" maxlength="40" required>
+        <input placeholder="Введите имя" id="name-input" name="name" type="text" class="popup__input popup__input_type_name popup__profile-name" minlength="2" maxlength="40" required>
         <span class="popup__input-error name-input-error"></span>
-        <input placeholder="Введите профессию" id="job-input" type="text" class="popup__input popup__input_type_description" minlength="2" maxlength="200" required>
+        <input placeholder="Введите профессию" id="job-input" name="description" type="text" class="popup__input popup__input_type_description popup__profile-description" minlength="2" maxlength="200" required>
         <span class="popup__input-error job-input-error"></span>
         <button type="submit" id="profile-save-button" class="popup__save-button">Сохранить</button>
       </form>
@@ -53,9 +52,9 @@
     <div class="popup__container">
       <h3 class="popup__title">Новое место</h3>
       <form name="form" id="place-form" class="popup__form" novalidate>
-        <input placeholder="Название места" id="place-input" type="text" class="popup__input popup__input_type_name" minlength="2" maxlength="30" required>
+        <input placeholder="Название места" id="place-input" name="name" type="text" class="popup__input popup__input_type_name" minlength="2" maxlength="30" required>
         <span class="popup__input-error place-input-error popup__input-error_active"></span>
-        <input placeholder="Ссылка на картинку" id="link-input" type="url" class="popup__input popup__input_type_description" required>
+        <input placeholder="Ссылка на картинку" id="link-input" name="link" type="url" class="popup__input popup__input_type_description" required>
         <span class="popup__input-error link-input-error popup__input-error_active"></span>
         <button id="place_save-button" type="submit" class="popup__save-button">Создать</button>
       </form>
@@ -65,7 +64,7 @@
   <section class="popup image-popup">
     <div class="image-popup__container">
       <img class="image-popup__image"
-      src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"
+      src=""
       alt="">
       <h3 class="image-popup__name"></h3>
       <button id="image-close-button" class="popup__close-button"></button>
@@ -74,7 +73,7 @@
   <template id="element">
     <li class="elements__item">
       <img class="elements__item-image"
-      src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"
+      src=""
       alt="">
       <div class="elements__description">
         <h2 class="elements__place"></h2>
@@ -83,14 +82,15 @@
       <button type="button" class="elements__delete-button"></button>
     </li>
   </template>
-  <script src="./scripts/constans.js"></script>
-  <script type="module" src="./scripts/Card.js"></script>
-  <script type="module" src="./scripts/FormValidator.js"></script>
-  <script type="module" src="./scripts/Popup.js"></script>
-  <script type="module" src="./scripts/PopupWithForm.js"></script>
-  <script type="module" src="./scripts/PopupWithImage.js"></script>
-  <script type="module" src="./scripts/Section.js"></script>
-  <script type="module" src="./scripts/UserInfo.js"></script>
-  <script type="module" src="./scripts/index.js"></script>
+  <!-- <script src="../dist/main.js"></script> -->
+  <!-- <script type="module" src="./components/constans.js"></script>
+  <script type="module" src="./components/Card.js"></script>
+  <script type="module" src="./components/FormValidator.js"></script>
+  <script type="module" src="./components/Popup.js"></script>
+  <script type="module" src="./components/PopupWithForm.js"></script>
+  <script type="module" src="./components/PopupWithImage.js"></script>
+  <script type="module" src="./components/Section.js"></script>
+  <script type="module" src="./components/UserInfo.js"></script>
+  <script type="module" src="./pages/index.js"></script> -->
 </body>
 </html>

@@ -65,11 +65,13 @@ export default class FormValidator {
     });
   };
 
+  //Отключение кнопки
   disableSubmitButton() {
     this._buttonElement.classList.add(this._inactiveButtonElement);
     this._buttonElement.disabled = true;
   }
 
+  //Активация кнопки
   _activeSubmitButton() {
     this._buttonElement.classList.remove(this._inactiveButtonElement)
     this._buttonElement.disabled = false;

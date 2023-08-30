@@ -1,29 +1,36 @@
-import Popup from './Popup.js'
+import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitForm) {
     super(popupSelector);
-    this._submitForm = submitForm;
+    this._submitForm = submitForm.bind(this);
     this._formElement = this._popupSelector.querySelector('.popup__form');
-    this._inputElements = this._formElement.querySelectorAll('.popup__input');
+    this._inputElements = Array.from(
+      this._formElement.querySelectorAll('.popup__input')
+    );
   }
 
+  //Возваращет объект со значениями ипутов
   _getInputValues() {
-    const inputValues = {};
+    const data = {};
     this._inputElements.forEach(element => {
-      inputValues[element.name] = element.value;
+      data[element.name] = element.value;
     });
-    return this._inputValies;
+    return data;
   }
 
+  //Навешивание слушателей на форму
   setEventListeners() {
     super.setEventListeners();
+    //Изменение формы при отправки
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._submitForm(this._getInputValues());
-    })
+      const data = this._getInputValues()
+      this._submitForm(data);
+    });
   }
 
+  //Закрытие попапа и обнуление формы
   close() {
     super.close();
     this._formElement.reset();
