@@ -17,7 +17,7 @@ import { initialCards,
   formElementProfile,
   formElementCard,
   popupImage,
-  addCardButton } from '../components/constans.js';
+  addCardButton } from '../utils/constans.js';
 
 //Валидация форм
 const formElementProfileValidator = new FormValidator(validationConfig, formElementProfile);
@@ -79,7 +79,6 @@ function handleCardClick (name, link) {
 //Слушатель на кнопку открытия попапа добавления карточки
 addCardButton.addEventListener('click', () => {
   formElementCardValidator.toggleButtonState();
-  formElementCard.reset();
   popupAddCard.open();
 });
 
