@@ -47,3 +47,12 @@ export const listElement = document.querySelector('.elements');
 export const popupPlace = document.querySelector('.popup_place');
 export const formElementProfile = document.querySelector('#profile__form');
 export const formElementCard = document.querySelector('#place-form');
+export const formElementAvatar = document.querySelector('#avatar-form');
+export const editAvatarButton = document.querySelector('.profile__avatar-container_edit-button');
+export const popupAvatar = document.querySelector('.avatar-popup');
+export const popupDelete = document.querySelector('.delete-popup');
+
+export const submitProfileButton = document.querySelector('#profile-save-button');
+export const submitCardButton = document.querySelector('#place_save-button');
+export const submitAvatarButton = document.querySelector('#avatar_save-button');
+export const submitDeleteButton = document.querySelector('#delete-submit-button');
