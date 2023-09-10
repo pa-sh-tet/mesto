@@ -9,9 +9,9 @@ import PopupWithConfirm from "../components/PopupWithConfirm.js";
 import './index.css'
 import {
   validationConfig,
-  editProfileButton,
-  popupEditNameInput,
-  popupEditDescriptionInput,
+  buttonOpenPopupProfile,
+  inputNamePopupEdit,
+  inputDescriptionPopupEdit,
   popupProfile,
   cardTemplate,
   listElement,
@@ -20,14 +20,14 @@ import {
   formElementCard,
   formElementAvatar,
   popupImage,
-  addCardButton,
-  editAvatarButton,
+  buttonOpenPopupCard,
+  buttonOpenPopupAvatar,
   popupAvatar,
   popupDelete,
-  submitAvatarButton,
-  submitCardButton,
-  submitDeleteButton,
-  submitProfileButton
+  buttonSubmitAvatar,
+  buttonSubmitCard,
+  buttonSubmitDelete,
+  buttonSubmitProfile
 } from '../utils/constans.js';
 
 const apiConfig = {
@@ -46,9 +46,8 @@ let userId;
 Promise.all([ api.getUserData(), api.getInitialCards() ])
   .then(([data, initialCards]) => {
     userId = data._id;
-    console.log(data);
     profileInfo.setUserInfo(data);
-    cardList.renderItems(initialCards, userId);
+    cardList.renderItems(initialCards);
   })
   .catch((error) => {
     console.log(error);
@@ -56,13 +55,13 @@ Promise.all([ api.getUserData(), api.getInitialCards() ])
 
 
 //Создание нового экземпляра карточки
-function createNewCard(data, id) {
+function createNewCard(data) {
   const newCard = new Card(
     data,
     cardTemplate,
     handleCardClick,
     handleCardDelete,
-    id,
+    userId,
     addLikeClick);
   return newCard.createCard();
 }
@@ -70,7 +69,7 @@ function createNewCard(data, id) {
 //Удаление карточки
 const handleCardDelete = (id, newCard) => {
   popupDeleteCard.setSubmitAction(() => {
-    submitDeleteButton.textContent = 'Удаление...';
+    buttonSubmitDelete.textContent = 'Удаление...';
     api.deleteCard(id)
       .then(() => {
         newCard.removeCard();
@@ -80,7 +79,7 @@ const handleCardDelete = (id, newCard) => {
         console.log(error)
       })
       .finally(() => {
-        submitDeleteButton.textContent = 'Да';
+        buttonSubmitDelete.textContent = 'Да';
       })
   })
   popupDeleteCard.open();
@@ -110,9 +109,9 @@ function addLikeClick(id, isCardLiked, newCard) {
 
 //Экземпляр Класса редактирования профиля
 const profileInfo = new UserInfo({
-  nameValue: '.profile__name',
-  descriptionValue: '.profile__description',
-  avatarValue: '.profile__image'
+  nameSelector: '.profile__name',
+  descriptionSelector: '.profile__description',
+  avatarSelector: '.profile__image'
 });
 
 //Валидация форм
@@ -127,83 +126,80 @@ formElementAvatarValidator.enableValidation();
 
 //Добавление карточки в кардлист
 const addCard = (data) => {
-  submitCardButton.textContent = 'Сохранение...';
+  buttonSubmitCard.textContent = 'Сохранение...';
     api.postCard(data)
     .then((data) => {
-      const cardElement = createNewCard(data, data.owner._id);
-      cardList.addItem(cardElement);
+      const cardElement = createNewCard(data);
+      cardList.addNewItem(cardElement);
+      popupAddCard.close();
     })
     .catch((error) => {
       console.log(error)
     })
     .finally(() => {
-      submitCardButton.textContent = 'Создать';
+      buttonSubmitCard.textContent = 'Создать';
     })
-  
-  popupAddCard.close();
 }
 
 //Создание списка карточек
 const cardList = new Section({
-  renderer: (data, id) => {
-    const placeElement = createNewCard(data, id);
+  renderer: (data) => {
+    const placeElement = createNewCard(data);
     cardList.addItem(placeElement);
   }
 }, listElement);
 
 //Функция редактирования аватара
 const editAvatar = (data) => {
-  submitAvatarButton.textContent = 'Сохранение...';
+  buttonSubmitAvatar.textContent = 'Сохранение...';
   api.patchAvatar(data.link)
     .then((data) => {
       profileInfo.setUserAvatar(data.avatar);
+      popupEditAvatar.close();
     })
     .catch((error) => {
       console.log(error)
     })
     .finally(() => {
-      submitAvatarButton.textContent = 'Сохранить';
+      buttonSubmitAvatar.textContent = 'Сохранить';
     });
-
-    popupEditAvatar.close();
 }
 
 //Функция добавления отредактированной информации в профиль
 const editProfile = (data) => {
-  submitProfileButton.textContent = 'Сохранение...';
+  buttonSubmitProfile.textContent = 'Сохранение...';
   api.patchUserInfo(data)
     .then((data) => {
       profileInfo.setProfileInfo(data);
+      popupEditProfile.close();
     })
     .catch((error) => {
       console.log(error)
     })
     .finally(() => {
-      submitProfileButton.textContent = 'Сохранить';
+      buttonSubmitProfile.textContent = 'Сохранить';
     })
-    
-    popupEditProfile.close();
 }
 
 //Слушатель на кнопку открытия попапа добавления карточки
-addCardButton.addEventListener('click', () => {
+buttonOpenPopupCard.addEventListener('click', () => {
   formElementCardValidator.toggleButtonState();
   formElementCardValidator.clearErrors();
   popupAddCard.open();
 });
 
 //Слушатель на кнопку открытия попапа редактирования профиля
-editProfileButton.addEventListener('click', () => {
+buttonOpenPopupProfile.addEventListener('click', () => {
   formElementProfileValidator.toggleButtonState();
   formElementProfileValidator.clearErrors();
   const { name, about } = profileInfo.getUserInfo();
-  popupEditNameInput.value = name;
-  popupEditDescriptionInput.value = about;
+  inputNamePopupEdit.value = name;
+  inputDescriptionPopupEdit.value = about;
   popupEditProfile.open();
 });
 
 //Слушатель на кнопку открытия попапа редактирования аватара
-editAvatarButton.addEventListener('click', () => {
+buttonOpenPopupAvatar.addEventListener('click', () => {
   formElementAvatarValidator.toggleButtonState();
   formElementAvatarValidator.clearErrors();
   popupEditAvatar.open();

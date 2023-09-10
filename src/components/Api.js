@@ -33,7 +33,6 @@ export default class Api {
 
   //Патч новой информации в профиль
   patchUserInfo(data) {
-    console.log(data);
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
       method: "PATCH",
