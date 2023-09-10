@@ -112,7 +112,7 @@ function addLikeClick(id, isCardLiked, newCard) {
 const profileInfo = new UserInfo({
   nameValue: '.profile__name',
   descriptionValue: '.profile__description',
-  avatarValue: '.profile__avatar-container_image'
+  avatarValue: '.profile__avatar-container__image'
 });
 
 //Валидация форм
