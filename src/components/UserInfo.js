@@ -9,21 +9,26 @@ export default class UserInfo {
   getUserInfo() {
     return {
       name: this._nameValue.textContent,
-      description: this._descriptionValue.textContent,
+      about: this._descriptionValue.textContent,
       avatar: this._avatarValue.src,
     };
+  
   }
 
   //Принимает объект и подставляет его имя и описание в значения профиля в разметку
-  setUserInfo({ name, description, avatar, _id }) {
+  setUserInfo({ name, about, avatar, _id }) {
     this._nameValue.textContent = name;
-    this._descriptionValue.textContent = description;
+    this._descriptionValue.textContent = about;
     this._avatarValue.src = avatar;
     this._userId = _id;
   }
 
+  setProfileInfo({ name, about }) {
+    this._nameValue.textContent = name;
+    this._descriptionValue.textContent = about;
+  }
+
   setUserAvatar(avatarLink) {
-    console.log(avatar);
     this._avatarValue.src = avatarLink;
   }
 }

@@ -27,6 +27,12 @@ export default class FormValidator {
     _errorElement.textContent = '';
   }
 
+  clearErrors() {
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    })
+  }
+
   //Проверка на валидность инпута
   _checkInputValidity(inputElement) {
     //Если не валиден - показать сообщение об ошибке

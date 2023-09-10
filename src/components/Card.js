@@ -31,16 +31,30 @@ export default class Card{
     this._cardElement = null;
   }
 
+  //Проверка наличия лайка определенного пользователем
+  isCardLiked() {
+    return this._likes.some((like) => {
+      return like._id === this._userId;
+    });
+  }
+
   //Лайк карточки
-  _likeCard(likes) {
-    this.buttonLike.classList.toggle('elements__like-button_active');
+  _likeCardClick(likes) {
     this.likeCardCounter.textContent = likes.length;
+    this._likes = likes;
+    if (this.isCardLiked()) {
+      this.buttonLike.classList.add('elements__like-button_active');
+    } else {
+      this.buttonLike.classList.remove('elements__like-button_active');
+    }
   }
 
   //Навешивание слушателей на кнопки удаления и лайка, а также на картинку карточки
   _setEventListeners() {
-    this.buttonDelete.addEventListener('click', () => {this._deleteCard(this._id, this)});
-    this.buttonLike.addEventListener('click', () => {this._setLike(this._id, this)});
+    this.buttonDelete.addEventListener('click', () => {
+      this._deleteCard(this._id, this);
+    });
+    this.buttonLike.addEventListener('click', () => this._setLike(this._id, this.isCardLiked(), this));
     this.cardImage.addEventListener('click', () => {this._handleCardClick(this._name, this._link)});
   }
 
@@ -54,12 +68,7 @@ export default class Card{
       this.buttonDelete.setAttribute('style', 'display: flex;');
     }
 
-    this.likeCardCounter.textContent = this._likes.length;
-
-    if (this._likes.some(like => {like._id === this._userId})) {
-      buttonLike.classList.add('elements__like-button_active');
-    }
-
+    this._likeCardClick(this._likes);
     this._setEventListeners();
 
     return this._cardElement;

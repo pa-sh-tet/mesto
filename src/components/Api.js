@@ -4,8 +4,8 @@ export default class Api {
     this._headers = headers;
   }
 
+  //Ответ от сервера
   _getResponse(res) {
-    console.log(res);
     if (res.ok) {
       return res.json();
     }
@@ -13,6 +13,7 @@ export default class Api {
     return Promise.reject(`Возникла ошибка: ${res.status}`);
   }
   
+  //Получить начальный карточки
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
       headers: this._headers,
@@ -21,7 +22,8 @@ export default class Api {
       .then(this._getResponse);
   }
 
-  getUserInfo() {
+  //Получение текущей информации в профиле
+  getUserData() {
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
       method: "GET",
@@ -29,18 +31,20 @@ export default class Api {
       .then(this._getResponse);
   }
 
-  patchUserInfo({ nameProfile, descriptionProfile }) {
+  //Патч новой информации в профиль
+  patchUserInfo(data) {
+    console.log(data);
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
       method: "PATCH",
       body: JSON.stringify({
-        name: nameProfile, 
-        description: descriptionProfile,
+        name: data.name, 
+        about: data.about,
       }),
-    })
-      .then(this._getResponse);
+    }).then(this._getResponse);
   }
 
+  //Пост новой карточки
   postCard(data) {
     return fetch(`${this._url}/cards`, {
       headers: this._headers,
@@ -50,6 +54,7 @@ export default class Api {
       .then(this._getResponse)
   }
 
+  //Удаление карточки
   deleteCard(id) {
     return fetch(`${this._url}/cards/${id}`, {
       headers: this._headers,
@@ -58,6 +63,7 @@ export default class Api {
       .then(this._getResponse);
   }
 
+  //Поставить лайк
   setLike(id) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       headers: this._headers,
@@ -66,6 +72,7 @@ export default class Api {
       .then(this._getResponse);
   }
 
+  //Удалить лайк
   deleteLike(id) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       headers: this._headers,
@@ -74,8 +81,8 @@ export default class Api {
       .then(this._getResponse);
   }
 
-  patchAvatar({ avatarLink }) {
-    // console.log(avatar);
+  //Изменить аватар
+  patchAvatar( avatarLink ) {
     return fetch(`${this._url}/users/me/avatar`, {
       headers: this._headers,
       method: "PATCH",
