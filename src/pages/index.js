@@ -171,20 +171,18 @@ const editAvatar = (data) => {
 //Функция добавления отредактированной информации в профиль
 const editProfile = (data) => {
   submitProfileButton.textContent = 'Сохранение...';
-    api.patchUserInfo(data)
-      .then((data) => {
-        console.log(data);
-        profileInfo.setProfileInfo(data);
-        // console.log(profileInfo);
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-      .finally(() => {
-        submitProfileButton.textContent = 'Сохранить';
-      })
-      
-      popupEditProfile.close();
+  api.patchUserInfo(data)
+    .then(() => {
+      profileInfo.setProfileInfo(data);
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+    .finally(() => {
+      submitProfileButton.textContent = 'Сохранить';
+    })
+    
+    popupEditProfile.close();
 }
 
 //Слушатель на кнопку открытия попапа добавления карточки
