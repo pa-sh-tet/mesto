@@ -112,7 +112,7 @@ function addLikeClick(id, isCardLiked, newCard) {
 const profileInfo = new UserInfo({
   nameValue: '.profile__name',
   descriptionValue: '.profile__description',
-  avatarValue: '.profile__avatar-container__image'
+  avatarValue: '.profile__image'
 });
 
 //Валидация форм
@@ -172,7 +172,7 @@ const editAvatar = (data) => {
 const editProfile = (data) => {
   submitProfileButton.textContent = 'Сохранение...';
   api.patchUserInfo(data)
-    .then(() => {
+    .then((data) => {
       profileInfo.setProfileInfo(data);
     })
     .catch((error) => {

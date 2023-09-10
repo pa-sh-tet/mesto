@@ -1,5 +1,5 @@
-.profile__avatar-container__edit-button {
-  background-image: url(../../../../images/EditAvatar.svg);
+.profile__edit-avatar-button {
+  background-image: url(../../../images/EditAvatar.svg);
   background-color: transparent;
   background-color: rgba(0, 0, 0, 0.8);
   background-repeat: no-repeat;
@@ -17,7 +17,7 @@
   transition: .3s ease;
 }
 
-.profile__avatar-container__edit-button:hover {
+.profile__edit-avatar-button:hover {
   opacity: 1;
   cursor: pointer;
 }

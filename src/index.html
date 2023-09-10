@@ -14,10 +14,10 @@
     <section class="profile">
       <div class="profile__face">
         <div class="profile__avatar-container">
-          <img class="profile__avatar-container__image"
+          <img class="profile__image"
           src="<%=require('./images/image.jpg')%>"
           alt="Фото профиля">
-          <button type="button" class="profile__avatar-container__edit-button"></button>
+          <button type="button" class="profile__edit-avatar-button"></button>
         </div>
         <div class="profile__data">
           <div class="profile__info">
@@ -62,7 +62,7 @@
         <input placeholder="Название места" id="place-input" name="name"
         type="text" class="popup__input popup__input_type_name" minlength="2" maxlength="30" required>
         <span class="popup__input-error place-input-error popup__input-error_active"></span>
-        <input placeholder="Ссылка на картинку" id="place-link-input" name="link"
+        <input placeholder="Ссылка на картинку" id="link-input" name="link"
         type="url" class="popup__input popup__input_type_description" required>
         <span class="popup__input-error link-input-error popup__input-error_active"></span>
         <button id="place_save-button" type="submit" class="popup__save-button">Создать</button>
@@ -90,9 +90,9 @@
     <div class="avatar-popup__container">
       <h3 class="popup__title">Обновить аватар</h3>
       <form name="form" id="avatar-form" class="popup__form" novalidate>
-        <input placeholder="Ссылка на картинку" id="link-input" name="link"
+        <input placeholder="Ссылка на картинку" id="avatar-input" name="link"
         type="url" class="popup__input popup__input_type_description" required>
-        <span class="popup__input-error link-input-error popup__input-error_active"></span>
+        <span class="popup__input-error avatar-input-error popup__input-error_active"></span>
         <button id="avatar_save-button" type="submit" class="popup__save-button">Сохранить</button>
       </form>
       <button type="button" id="avatar-close-button" class="popup__close-button"></button>

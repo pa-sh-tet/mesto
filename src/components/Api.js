@@ -39,7 +39,7 @@ export default class Api {
       method: "PATCH",
       body: JSON.stringify({
         name: data.name, 
-        about: data.about,
+        about: data.description,
       }),
     }).then(this._getResponse);
   }
